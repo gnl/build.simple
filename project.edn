@@ -1,0 +1,25 @@
+{;;; Keys for `clojure.tools.build.api/write-pom` (see docstring for details):
+ :lib         com.github.gnl/build.simple
+ :version     "0.7.1"
+ :scm         {;; `:connection` and `:developerConnection` are automatically set
+               ;; from `:url`, but can be overridden here
+               :url "https://github.com/gnl/build.simple"}
+ :pom-data    [[:description "clojure/tools.build without the DIY – install, sign and deploy libraries easily and securely like with Leiningen"]
+               [:url "https://github.com/gnl/build.simple"]
+               [:distributionManagement
+                [:repository
+                 [:id "clojars"]
+                 [:url "https://clojars.org/repo"]]]
+               [:licenses [:license
+                           [:name "Eclipse Public License 2.0"]
+                           [:url "https://opensource.org/license/epl-2.0/"]]]]
+ ;:src-dirs []   ; set from `deps.edn` `:paths` by default
+ ;:resource-dirs []
+ ;:repos {}
+
+ ;;; Keys for `clojure.tools.build.api/create-basis` (see docstring for details):
+ :aliases     [:pom]   ; you can use this as Leiningen/Maven's `:scope-provided`
+
+ ;;; Custom build.simple keys:
+ ;:clean-dirs ["target" ".shadow-cljs" ".cpcache"]
+ :signing-key "EA4E52DD8F4A7AD2F6D1F1FBE1A18DCD43ECC7C9"}

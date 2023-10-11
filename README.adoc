@@ -1,0 +1,62 @@
+:linkattrs:
+:sectanchors:
+ifdef::env-github,env-cljdoc[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+image:https://img.shields.io/badge/License-EPL%202.0-94A5F5.svg[License,link=https://choosealicense.com/licenses/epl-2.0/]
+
+## clojure/tools.build without the DIY
+
+. Add image:https://img.shields.io/clojars/v/com.github.gnl/build.simple.svg[Clojars Project,link=https://clojars.org/com.github.gnl/build.simple] to your `deps.edn`:
++
+.deps.edn
+[source,clojure]
+----
+:aliases {;;; Tools
+          :build {:deps       {com.github.gnl/build.simple {:mvn/version "x.x.x"}}
+                  :ns-default build.simple.core}}
+----
++
+. Install Maven 3.x+ for deployment, and configure it to get the Clojars credentials from the environment:
++
+.~/.m2/settings.xml
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 https://maven.apache.org/xsd/settings-1.2.0.xsd">
+  <servers>
+    <server>
+      <id>clojars</id>
+      <username>${env.clojars_username}</username>
+      <password>${env.clojars_password}</password>
+    </server>
+  </servers>
+</settings>
+----
++
+. Create a https://github.com/gnl/build.simple/blob/master/project.edn[`project.edn` file] in your project's root directory
++
+. `clj -T:build [install|deploy|jar|pom|clean] [:check false] [:sign false]`
+
+NOTE: When deploying a non-snapshot artifact, `deploy` performs a number of sanity checks by default (clean working directory, correct git version tag, etc.), and signs it. It securely prompts for repository credentials and passes them to Maven via the environment; GPG-signing and passphrase handling are fully delegated to gpg-agent (you should probably use a graphical pinentry interface for this to work reliably).
+
+TIP: If you have special requirements, build.simple can be a good starting point or foundation for rolling your own tools.build solution – feel free to call into it from your code if you just want to add some minor functionality on top without writing everything from scratch.
+
+
+## Why
+
+tools.build is great under the hood, but I miss Leiningen's easy basic workflow of 1. bump version/edit metadata in `project.clj` -> 2. `lein install` jar locally for testing -> 3. `lein deploy clojars`.
+
+Performing the same tasks with tools.build involved some combination of: creating and editing a verbose `pom.xml` template file (before 0.9.6's `:pom-data`, anyway); syncing dependencies from `deps.edn`; choosing between multiple separate solutions for deployment, most of which handle the GPG and/or Clojars credentials in various rather convoluted and insecure ways; directly calling Maven; and writing some code to tie it all together.
+
+I have no intention of reimplementing Leiningen on top of tools.build here, and am inclined to view the project as more or less feature-complete. build.simple is meant to cover the 95% use case of a library author, and I would generally recommend using tools.build directly for anything else.
+
+{empty} +
+Copyright (c) 2023 George Lipov +
+Licensed under the https://choosealicense.com/licenses/epl-2.0/[Eclipse Public License 2.0]
