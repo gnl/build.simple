@@ -81,8 +81,8 @@
 
 
 (defn maybe-load-config!
-  [*config]
-  (when (nil? @*config)
+  [!config]
+  (when (nil? @!config)
     (let [deps-config    (edn/read-string (slurp "deps.edn"))
           project-config (edn/read-string (slurp "project.edn"))
           scm-url-root   (some->> project-config
@@ -116,4 +116,4 @@
                                  :jar-file  (format "target/%s-%s.jar"
                                                     (name lib)
                                                     version)})]
-      (reset! *config full-config))))
+      (reset! !config full-config))))

@@ -16,9 +16,7 @@
   "
   (:require
    [clojure.tools.build.api :as b]
-   [build.simple.utils
-    :refer [step done maybe-load-config! validate-version snapshot-version?
-            distribution-repos predeploy-checks read-credentials]]))
+   [build.simple.utils :refer :all]))
 
 
 (def !config (atom nil))
