@@ -24,11 +24,18 @@
 (def !config (atom nil))
 
 
-(defn clean [_]
+(defn clean [{:keys [dir]}]
   (maybe-load-config! !config)
   (step "Cleaning build")
-  (doseq [dir (:clean-dirs @!config)]
-    (b/delete {:path dir}))
+  (let [clean-dirs (if dir
+                     (let [dir (str dir)]
+                       (assert (contains? (:clean-dirs @!config) dir)
+                               "Dir not found in project.edn -> `:clean-dirs`.")
+                       [dir])
+                     (:clean-dirs @!config))]
+    (doseq [path clean-dirs]
+      (step (format "\nRemoving `./%s`" path))
+      (b/delete {:path path})))
   (done))
 
 
@@ -51,7 +58,7 @@
 
 (defn jar [_]
   (maybe-load-config! !config)
-  (clean nil)
+  (clean {:dir "target"})
   (pom nil)
   (step "Building jar")
   (b/copy-dir {:src-dirs   (mapcat val

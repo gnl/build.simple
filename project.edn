@@ -1,6 +1,6 @@
 {;;; Keys for `clojure.tools.build.api/write-pom` (see docstring for details):
  :lib         com.github.gnl/build.simple
- :version     "0.7.1"
+ :version     "0.7.2-SNAPSHOT"
  :scm         {;; `:connection` and `:developerConnection` are automatically set
                ;; from `:url`, but can be overridden here
                :url "https://github.com/gnl/build.simple"}
@@ -21,5 +21,5 @@
  :aliases     [:pom]   ; you can use this as Leiningen/Maven's `:scope-provided`
 
  ;;; Custom build.simple keys:
- ;:clean-dirs ["target" ".shadow-cljs" ".cpcache"]
+ ;:clean-dirs [".shadow-cljs" ".cpcache"]   ; "target" is always added to the list
  :signing-key "EA4E52DD8F4A7AD2F6D1F1FBE1A18DCD43ECC7C9"}

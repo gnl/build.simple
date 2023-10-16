@@ -101,9 +101,11 @@
           ;; target here – when none are set explicitly – was briefly considered
           ;; and ultimately rejected due to the risk of accidentally dumping a
           ;; closed-source project onto the internets.
-          full-config    (merge {:src-dirs   (:paths deps-config)
-                                 :clean-dirs ["target"]}
+          full-config    (merge {:src-dirs (:paths deps-config)}
                                 project-config
+                                {:clean-dirs (->> (:clean-dirs project-config)
+                                                  (concat ["target"])
+                                                  set)}
                                 {:scm (merge default-scm
                                              (:scm project-config)
                                              (when-not (snapshot-version? version)
