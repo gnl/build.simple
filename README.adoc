@@ -53,9 +53,9 @@ TIP: If you have special requirements, build.simple can be a good starting point
 
 While I consider tools.build to be an improvement in a number of ways – straightforward dependency resolution, no implicit behaviour/magic profiles, greater flexibility – I do miss Leiningen's easy basic workflow of 1. bump version/edit metadata in `project.clj` -> 2. `lein install` jar locally for testing -> 3. `lein deploy clojars`.
 
-Performing the same tasks with tools.build involved some combination of: creating and editing a verbose `pom.xml` template file (before 0.9.6's `:pom-data`, anyway); syncing dependencies from `deps.edn`; choosing between multiple separate solutions for deployment, most of which handle the GPG and/or Clojars credentials in various rather convoluted and insecure ways; directly calling Maven; and writing some code to tie it all together.
+Performing the same tasks with tools.build involves some combination of: creating and editing a verbose `pom.xml` template file (before 0.9.6's `:pom-data`, anyway); syncing dependencies from `deps.edn`; choosing between multiple separate solutions for deployment, most of which handle the GPG and/or Clojars credentials in various rather convoluted and insecure ways; directly calling Maven; and writing some code to tie it all together.
 
-I have no intention of reimplementing Leiningen on top of tools.build here, and am inclined to view the project as more or less feature-complete. build.simple is meant to cover the 95% use case of a library author, and I would generally recommend using tools.build directly for anything else.
+I have no intention of reinventing Leiningen here, and am inclined to view the project as more or less feature-complete. build.simple is meant to cover the 95% use case of a library author, and I would generally recommend using tools.build directly for anything else.
 
 {empty} +
 Copyright (c) 2023 George Lipov +
