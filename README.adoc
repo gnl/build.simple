@@ -9,7 +9,7 @@ endif::[]
 
 image:https://img.shields.io/badge/License-EPL%202.0-94A5F5.svg[License,link=https://choosealicense.com/licenses/epl-2.0/]
 
-## clojure/tools.build with batteries included
+## tools.build's missing piece
 
 . Add image:https://img.shields.io/clojars/v/com.github.gnl/build.simple.svg[Clojars Project,link=https://clojars.org/com.github.gnl/build.simple] to your `deps.edn`:
 +

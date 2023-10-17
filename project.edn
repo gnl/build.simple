@@ -4,7 +4,7 @@
  :scm         {;; `:connection` and `:developerConnection` are automatically set
                ;; from `:url`, but can be overridden here
                :url "https://github.com/gnl/build.simple"}
- :pom-data    [[:description "clojure/tools.build with batteries included – install, sign and deploy libraries easily and securely like with Leiningen"]
+ :pom-data    [[:description "tools.build's missing piece – install, sign and deploy libraries easily and securely like with Leiningen"]
                [:url "https://github.com/gnl/build.simple"]
                [:distributionManagement
                 [:repository
