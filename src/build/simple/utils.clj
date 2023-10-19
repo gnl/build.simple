@@ -110,6 +110,7 @@
                                                     (:scm project-config)
                                                     (when-not (snapshot-version? version)
                                                       {:tag (str "v" version)}))
+                                 :deps       deps-config
                                  :basis      (b/create-basis (select-keys project-config [:aliases]))
                                  :class-dir  "target/classes"
                                  :jar-file   (format "target/%s-%s.jar"
