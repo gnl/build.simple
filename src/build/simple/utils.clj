@@ -103,15 +103,15 @@
           ;; closed-source project onto the internets.
           full-config    (merge {:src-dirs (:paths deps-config)}
                                 project-config
-                                {:clean-dirs (->> (:clean-dirs project-config)
-                                                  (concat ["target"])
-                                                  set)
+                                {:clean-dirs (set (conj (:clean-dirs project-config)
+                                                        "target"))
                                  :scm        (merge default-scm
                                                     (:scm project-config)
                                                     (when-not (snapshot-version? version)
                                                       {:tag (str "v" version)}))
                                  :deps       deps-config
-                                 :basis      (b/create-basis (select-keys project-config [:aliases]))
+                                 :basis      (b/create-basis (select-keys project-config
+                                                                          [:aliases]))
                                  :class-dir  "target/classes"
                                  :jar-file   (format "target/%s-%s.jar"
                                                      (name lib)
