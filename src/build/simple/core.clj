@@ -19,7 +19,7 @@
    [build.simple.utils :refer :all]))
 
 
-(def !config (atom nil))
+(defonce !config (atom nil))
 
 
 (defn clean [{:keys [dir]}]

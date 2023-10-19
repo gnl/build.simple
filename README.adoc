@@ -57,6 +57,12 @@ Performing the same tasks with tools.build involves some combination of: creatin
 
 I have no intention of reinventing Leiningen here, and am inclined to view the project as more or less feature-complete. build.simple is meant to cover the 95% use case of a library author, and I would generally recommend using tools.build directly for anything else.
 
+
+## Libraries using this
+
+- [gnl/playback](https://github.com/gnl/playback)
+
+
 {empty} +
 Copyright (c) 2023 George Lipov +
 Licensed under the https://choosealicense.com/licenses/epl-2.0/[Eclipse Public License 2.0]
