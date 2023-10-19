@@ -105,15 +105,14 @@
                                 project-config
                                 {:clean-dirs (->> (:clean-dirs project-config)
                                                   (concat ["target"])
-                                                  set)}
-                                {:scm (merge default-scm
-                                             (:scm project-config)
-                                             (when-not (snapshot-version? version)
-                                               {:tag (str "v" version)}))}
-                                {:deps      deps-config
-                                 :basis     (b/create-basis (select-keys project-config [:aliases]))
-                                 :class-dir "target/classes"
-                                 :jar-file  (format "target/%s-%s.jar"
-                                                    (name lib)
-                                                    version)})]
+                                                  set)
+                                 :scm        (merge default-scm
+                                                    (:scm project-config)
+                                                    (when-not (snapshot-version? version)
+                                                      {:tag (str "v" version)}))
+                                 :basis      (b/create-basis (select-keys project-config [:aliases]))
+                                 :class-dir  "target/classes"
+                                 :jar-file   (format "target/%s-%s.jar"
+                                                     (name lib)
+                                                     version)})]
       (reset! !config full-config))))
