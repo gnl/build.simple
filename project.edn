@@ -1,6 +1,6 @@
 {;;; Keys for `clojure.tools.build.api/write-pom` (see docstring for details):
  :lib         com.github.gnl/build.simple
- :version     "0.7.3-SNAPSHOT"
+ :version     "0.7.3"
  :scm         {;; `:connection` and `:developerConnection` are automatically set
                ;; from `:url`, but can be overridden here
                :url "https://github.com/gnl/build.simple"}
