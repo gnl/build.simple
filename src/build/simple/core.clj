@@ -102,7 +102,7 @@
       (step (format "\nDeploying %s jar to `%s` repo"
                     (if sign? "signed" "unsigned")
                     id))
-      (b/process {:env (read-credentials id)
+      (b/process {:env (get-credentials id)
                   :command-args
                   (remove nil?
                           ["mvn"

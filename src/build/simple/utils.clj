@@ -50,22 +50,35 @@
   (done))
 
 
-(defn read-credentials [repo-id]
+(defn get-credentials [repo-id]
   (println "\n")
-  (let [console (System/console)
-        user    (.readLine console (format "Username for `%s` repo: " repo-id) nil)
-        ;; REVIEW: This prints the prompt twice for some reason.
-        token   (apply str (.readPassword console "Deploy password or token: " nil))]
-    ;; Make sure the username and password vars in ~/.m2/settings.xml are set
-    ;; correctly for each repository ID, e.g:
-    ;<server>
-    ;  <id>clojars</id>
-    ;  <username>${env.clojars_username}</username>
-    ;  <password>${env.clojars_password}</password>
-    ;</server>
-    (println "...")
-    {(str repo-id "_username") user
-     (str repo-id "_password") token}))
+  (let [user-env-var     (str repo-id "_username")
+        password-env-var (str repo-id "_password")
+        env-user         (System/getenv user-env-var)
+        env-password     (System/getenv password-env-var)]
+    (if (not-any? string/blank? [env-user env-password])
+      (do
+        (println (format "Repository credentials found in the environment – using `$%s` and `$%s`...\n"
+                         user-env-var
+                         password-env-var))
+        {user-env-var     env-user
+         password-env-var env-password})
+      (do
+        (println "No repository credentials found in the environment – prompting...\n")
+        (let [console         (System/console)
+              prompt-user     (.readLine console (format "Username for `%s` repo: " repo-id) nil)
+              ;; REVIEW: This prints the prompt twice for some reason.
+              prompt-password (apply str (.readPassword console "Deploy password or token: " nil))]
+          ;; Make sure the username and password vars in ~/.m2/settings.xml are set
+          ;; correctly for each repository ID, e.g:
+          ;<server>
+          ;  <id>clojars</id>
+          ;  <username>${env.clojars_username}</username>
+          ;  <password>${env.clojars_password}</password>
+          ;</server>
+          (println "...")
+          {user-env-var     prompt-user
+           password-env-var prompt-password})))))
 
 
 (defn distribution-repos
