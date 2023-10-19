@@ -60,7 +60,7 @@ I have no intention of reinventing Leiningen here, and am inclined to view the p
 
 ## Libraries using this
 
-- [gnl/playback](https://github.com/gnl/playback)
+- https://github.com/gnl/playback[gnl/playback]
 
 
 {empty} +
