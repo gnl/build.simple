@@ -23,7 +23,7 @@ image:https://img.shields.io/badge/License-EPL%202.0-94A5F5.svg[License,link=htt
 +
 . Create a https://github.com/gnl/build.simple/blob/master/project.edn[`project.edn` file] in your project's root directory
 +
-. Install Maven 3.x+ for deployment, and configure it to get the Clojars credentials from the environment:
+. Install Maven 3.x+ (build.simple uses it for deployment), and configure it to get the Clojars credentials from the environment:
 +
 .~/.m2/settings.xml
 [source,xml]
