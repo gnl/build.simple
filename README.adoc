@@ -21,6 +21,8 @@ image:https://img.shields.io/badge/License-EPL%202.0-94A5F5.svg[License,link=htt
                   :ns-default build.simple.core}}
 ----
 +
+. Create a https://github.com/gnl/build.simple/blob/master/project.edn[`project.edn` file] in your project's root directory
++
 . Install Maven 3.x+ for deployment, and configure it to get the Clojars credentials from the environment:
 +
 .~/.m2/settings.xml
@@ -39,8 +41,6 @@ image:https://img.shields.io/badge/License-EPL%202.0-94A5F5.svg[License,link=htt
   </servers>
 </settings>
 ----
-+
-. Create a https://github.com/gnl/build.simple/blob/master/project.edn[`project.edn` file] in your project's root directory
 +
 . `clj -T:build [install|deploy|jar|pom|clean] [:check false] [:sign false]`
 
