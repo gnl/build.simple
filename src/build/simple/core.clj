@@ -6,7 +6,7 @@
 ;; terms of this license. You must not remove this notice, or any other, from
 ;; this software.
 
-(ns ^:no-doc build.simple.core
+(ns build.simple.core
   "
   1. Update project.edn
   2. `clj -T:build install`
