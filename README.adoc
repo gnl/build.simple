@@ -62,6 +62,10 @@ I have no intention of reinventing Leiningen here, and am inclined to view the p
 
 - https://github.com/gnl/playback[gnl/playback]
 
+## Similar projects
+
+- https://github.com/liquidz/build.edn[liquidz/build.edn] has been around for quite a bit longer and takes a very similar approach to making the tools.build experience more pleasant. I wasn't aware of it when I wrote and released build.simple. build.edn has more features, more configurability, more (relative) complexity, a non-prompting approach to credentials handling, and no artifact signing (at the time of writing.)
+
 
 {empty} +
 Copyright (c) 2023 George Lipov +
