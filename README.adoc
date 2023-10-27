@@ -46,7 +46,7 @@ image:https://img.shields.io/badge/License-EPL%202.0-94A5F5.svg[License,link=htt
 
 NOTE: When deploying a non-snapshot artifact, `deploy` performs a number of sanity checks by default (clean working directory, correct git version tag, etc.), and signs it. It securely prompts for repository credentials as needed, and passes them to Maven via the environment; GPG-signing and passphrase handling are fully delegated to gpg-agent (you should probably use a graphical pinentry interface for this to work reliably).
 
-TIP: If you have special requirements, build.simple can be a good starting point or foundation for rolling your own tools.build solution – feel free to call into it from your code if you just want to add some minor functionality on top without writing everything from scratch.
+TIP: If you have special requirements, build.simple can be a good starting point or foundation for rolling your own tools.build solution – feel free to call into it from your code and add your own keys to project.edn if you just want to add some minor functionality on top without writing everything from scratch.
 
 
 ## Why
