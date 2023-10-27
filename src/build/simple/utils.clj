@@ -120,7 +120,8 @@
                                                         "target"))
                                  :scm        (merge default-scm
                                                     (:scm project-config)
-                                                    (when-not (snapshot-version? version)
+                                                    (if (snapshot-version? version)
+                                                      {:tag (b/git-process {:git-args ["rev-parse" "HEAD"]})}
                                                       {:tag (str "v" version)}))
                                  :deps       deps-config
                                  :basis      (b/create-basis (select-keys project-config
