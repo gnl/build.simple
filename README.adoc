@@ -21,11 +21,11 @@ image:https://img.shields.io/badge/License-EPL%202.0-94A5F5.svg[License,link=htt
                   :ns-default build.simple.core}}
 ----
 +
-. Create a https://github.com/gnl/build.simple/blob/master/project.edn[`project.edn` file] in your project's root directory
+. Create a https://github.com/gnl/build.simple/blob/master/project.edn[project.edn file] in your project's root directory
 +
 NOTE: All supported keys are documented in the config file linked above. build.simple tries to follow the https://fishshell.com/docs/current/design.html#configurability-is-the-root-of-all-evil["configurability is the root of all evil"] design principle.
 +
-. Install Maven 3.x+ (build.simple uses it for deployment), and configure it to get the Clojars (or other repository) credentials from the environment:
+. Install Maven 3.x+ (build.simple uses it for deployment), and set it up to get the Clojars (or other repository) credentials from the environment:
 +
 .~/.m2/settings.xml
 [source,xml]
